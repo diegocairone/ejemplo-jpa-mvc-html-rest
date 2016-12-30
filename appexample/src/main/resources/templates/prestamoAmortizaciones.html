@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>TABLE DE AMORTIZACION</title>
+        <style type="text/css">
+        table, th, td {
+    		border: 1px solid black;
+		}
+		table {
+			width: 100%
+		}
+		table th {
+			text-align: center;
+		}
+		table td {
+			text-align: right;
+		}
+        </style>
+    </head>
+    <body>
+        
+        <h1>TABLE DE AMORTIZACION</h1>
+        <a th:href="@{/prestamo}">Volver</a>
+        <a th:href="@{/amortizaciones/listar}">Listar</a>
+        <table>
+				
+				<thead>
+					<tr><th>NRO CUOTA</th><th>CAPITAL</th><th>INTERES</th><th>IVA</th><th>INTERES C/IVA</th><th>MONTO</th><th>SALDO</th></tr>
+				</thead>
+				<tbody>
+					<tr th:if="${#lists.isEmpty(cuotas)}">
+						<th colspan="7" style="text-align: center;">NO HAY CUOTAS</th>
+					</tr>
+					<tr th:each="cuota : ${cuotas}">
+						<td th:text="${cuota.numero}">numero</td>
+						<td th:text="${cuota.capital}">capital</td>
+						<td th:text="${cuota.interes}">intereses</td>
+						<td th:text="${cuota.iva}">iva</td>
+						<td th:text="${cuota.interesesGravados}">interes gravado</td>
+						<td th:text="${cuota.monto}">monto</td>
+						<td th:text="${cuota.saldoCapital}">saldo de capital</td>
+					</tr>
+				</tbody>
+				</table>
+				
+    </body>
+</html>

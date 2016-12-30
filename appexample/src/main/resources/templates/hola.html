@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Salir"/>
+	</form>
+        
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        
+    <p>HOLA</p>
+    <a th:href="@{/prestamo}">CALCULAR CUOTAS PRESTAMO</a>
+</body>
+</html>

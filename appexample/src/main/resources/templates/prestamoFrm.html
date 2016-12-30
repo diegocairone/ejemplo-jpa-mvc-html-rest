@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>PRESTAMOS</title>
+    </head>
+    <body>
+        
+        <h1>CALCULO DE LAS CUOTAS DEL PRESTAMO</h1>
+        <form method="post" th:object="${prestamoFrmDto}">
+            
+            <div>
+            	<label> Prestamo: <input type="text" name="prestamo" th:field="*{prestamo}" /> </label>
+            	<p th:if="${#fields.hasErrors('prestamo')}" th:errors="*{prestamo}">[capital prestado]</p> 
+            </div>
+            
+            <div>
+            	<label> Tipo Tasa: 
+            		<select name="tipoTasa" th:field="*{tipoTasa}">
+            			<option th:value="N">NOMINAL</option>
+            			<option th:value="E">EFECTIVA</option>
+            		</select> 
+            	</label>
+            	<p th:if="${#fields.hasErrors('tipoTasa')}" th:errors="*{tipoTasa}">[tipo de tasa]</p>
+            </div>
+            
+            <div>
+            	<label> Tasa: <input type="text" name="tasa" th:field="*{tasa}" /> </label>
+            	<p th:if="${#fields.hasErrors('tasa')}" th:errors="*{tasa}">[tasa]</p>
+            </div>
+            
+            <div>
+            	<label> Cuotas: <input type="text" name="cuotas" th:field="*{cuotas}" /> </label>
+            	<p th:if="${#fields.hasErrors('cuotas')}" th:errors="*{cuotas}">[cuotas]</p>
+            </div>
+            
+            <div>
+            	<label> Alicuota IVA: <input type="text" name="alicuota" th:field="*{alicuota}" /> </label>
+            	<p th:if="${#fields.hasErrors('alicuota')}" th:errors="*{alicuota}">[alicuota]</p>
+            </div>
+                        
+            <div><input type="submit" value="Calcular"/></div>
+        </form>
+    </body>
+</html>
